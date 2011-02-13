@@ -1,0 +1,80 @@
+-- MySQL dump 10.9
+--
+-- Host: localhost    Database: amazon_test
+-- ------------------------------------------------------
+-- Server version	4.1.22-standard
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `product_group_meta`
+--
+
+DROP TABLE IF EXISTS `product_group_meta`;
+CREATE TABLE `product_group_meta` (
+  `id` int(11) NOT NULL auto_increment,
+  `productgroup` varchar(50) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=88 DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `product_information`
+--
+
+DROP TABLE IF EXISTS `product_information`;
+CREATE TABLE `product_information` (
+  `id` int(11) NOT NULL auto_increment,
+  `asin` varchar(10) NOT NULL default '0',
+  `title` varchar(255) NOT NULL default 'N/A',
+  `author` varchar(255) NOT NULL default 'N/A',
+  `url` mediumtext NOT NULL,
+  `date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `surl` varchar(30) NOT NULL default 'N/A',
+  `productgroup` varchar(255) NOT NULL default 'N/A',
+  `smallimage` varchar(255) NOT NULL default '/images/noimage.jpg',
+  `mediumimage` varchar(255) NOT NULL default '/images/noimage.jpg',
+  `largeimage` varchar(255) NOT NULL default '/images/noimage.jpg',
+  `productgroup_id` int(10) NOT NULL default '999999',
+  PRIMARY KEY  (`id`),
+  KEY `asin_key` (`asin`),
+  KEY `productgroup_id_key` (`productgroup_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2202 DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `product_prices`
+--
+
+DROP TABLE IF EXISTS `product_prices`;
+CREATE TABLE `product_prices` (
+  `id` int(11) NOT NULL auto_increment,
+  `listprice` int(11) NOT NULL default '0',
+  `amaprice` int(11) NOT NULL default '0',
+  `usedprice` int(11) NOT NULL default '0',
+  `newprice` int(11) NOT NULL default '0',
+  `totalnew` int(11) NOT NULL default '0',
+  `totalused` int(11) NOT NULL default '0',
+  `totalcollectible` int(11) NOT NULL default '0',
+  `totalrefurbished` int(11) NOT NULL default '0',
+  `date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `asin` varchar(10) NOT NULL default '0',
+  `lid` int(11) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `lid_key` (`lid`),
+  KEY `asin_key` (`asin`)
+) ENGINE=MyISAM AUTO_INCREMENT=24205 DEFAULT CHARSET=utf8;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
